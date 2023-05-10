@@ -1,12 +1,16 @@
-import "./App.css";
+import styles from "./App.module.css";
 import InviteFriends from "./formik/InviteFriends";
-import SignupFormWithContext from "./formik/SignupFormWithContext";
+import SignupFormCustomised from "./formik/SignupFormCustomised";
+import SignupForm from "./formik/SignupFormWithContext";
 import Reservation from "./formik/MiniFormik";
+import JSONSchemaForm from "./json-schema";
+import SignUp from "./json-schema/SignUp/index.tsx";
+import MyForm from "./my-form";
 
 function App() {
   return (
-    <div className="App">
-      <InviteFriends />
+    <div className={styles.App}>
+      <MyForm />
     </div>
   );
 }

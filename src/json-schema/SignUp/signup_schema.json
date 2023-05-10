@@ -1,0 +1,90 @@
+{
+  "step1": {
+    "type": "object",
+    "required": ["userName", "certType", "password", "password2", "email"],
+    "properties": {
+      "userName": {
+        "type": "string",
+        "title": "User Name"
+      },
+      "certType": {
+        "title": "",
+        "$ref": "#/definitions/certTypeConditional"
+      },
+      "email": {
+        "type": "string",
+        "title": "Email"
+      },
+      "password": {
+        "type": "string",
+        "title": "Password"
+      },
+      "password2": {
+        "type": "string",
+        "title": "Confirm Password"
+      }
+    },
+    "definitions": {
+      "certTypeConditional": {
+        "type": "object",
+        "properties": {
+          "Certification Type": {
+            "type": "string",
+            "enum": ["ID Card", "Passport"],
+            "default": ""
+          }
+        },
+        "required": ["Certification Type"],
+        "dependencies": {
+          "Certification Type": {
+            "oneOf": [
+              {
+                "properties": {
+                  "Certification Type": {
+                    "enum": ["ID Card"]
+                  },
+                  "ID Number": {
+                    "title": "ID Number",
+                    "type": "string"
+                  }
+                },
+                "required": ["ID Number"]
+              },
+              {
+                "properties": {
+                  "Certification Type": {
+                    "enum": ["Passport"]
+                  },
+                  "Passport": {
+                    "title": "Passport Number",
+                    "type": "string"
+                  }
+                },
+                "required": ["Passport"]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "step2": {
+    "type": "object",
+    "properties": {
+      "bankName": {
+        "type": "string",
+        "title": "Bank",
+        "maxLength": 120
+      },
+      "cardNumber": {
+        "type": "string",
+        "title": "Debit card Number",
+        "minLength": 16
+      }
+    },
+    "dependencies": {
+      "bankName": ["cardNumber"],
+      "cardNumber": ["bankName"]
+    }
+  }
+}

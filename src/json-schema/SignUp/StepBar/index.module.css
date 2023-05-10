@@ -1,0 +1,142 @@
+.signup_steps > div:nth-child(odd) {
+  background-color: rgb(73, 72, 74);
+}
+.signup_steps > div {
+  height: 50px;
+  background-color: #fff;
+}
+.steps_root {
+  overflow: hidden;
+}
+.steps_root :global .ant-steps-navigation {
+  padding: 0;
+}
+/* arrow step item style */
+.steps_root :global .ant-steps-navigation .ant-steps-item {
+  position: relative;
+}
+.steps_root :global .ant-steps-navigation .ant-steps-item::before {
+  content: "";
+  background: none;
+  transition: none;
+  width: 0;
+  height: 0;
+  border-width: 25px 20px 25px 0;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+  position: absolute;
+  left: -19px;
+  top: 0;
+}
+.steps_root :global .ant-steps-navigation .ant-steps-item:first-child::before {
+  display: none;
+}
+.steps_root
+  :global
+  .ant-steps-navigation
+  .ant-steps-item:nth-child(odd):before {
+  border-color: transparent rgb(73, 72, 74) transparent transparent;
+}
+.steps_root
+  :global
+  .ant-steps-navigation
+  .ant-steps-item.ant-steps-item-active::before {
+  border-color: transparent white transparent transparent;
+  border-width: 22px 20px 22px 0;
+  left: -19px;
+  width: 0;
+}
+.steps_root
+  :global
+  .ant-steps-navigation
+  .ant-steps-item.ant-steps-item-active:nth-child(odd)::before {
+  border-width: 22px 20px 22px 0;
+  border-color: transparent rgb(73, 72, 74) transparent transparent;
+  width: 0;
+  left: -19px;
+}
+.steps_root
+  :global
+  .ant-steps-navigation
+  .ant-steps-item.ant-steps-item-finish::before {
+  border-color: transparent rgb(163, 198, 68) transparent transparent;
+}
+.steps_root :global .ant-steps-navigation .ant-steps-item::after {
+  content: "";
+  transform: none;
+  background: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+  left: unset;
+  top: 0;
+}
+.steps_root
+  :global
+  .ant-steps-navigation
+  .ant-steps-item.ant-steps-item-active::after {
+  content: "";
+  transform: none;
+  background: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0px;
+  top: -4px;
+  border-width: 26px 22px 26px 0;
+  border-style: solid;
+  border-color: transparent rgb(163, 198, 68) transparent transparent;
+}
+
+/* arrow step item style end */
+
+.steps_root :global .ant-steps-navigation .ant-steps-item-container {
+  padding-bottom: 0;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.steps_root
+  :global
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-icon {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.steps_root
+  :global
+  .ant-steps-item-process
+  > .ant-steps-item-container
+  > .ant-steps-item-icon
+  .ant-steps-icon {
+  color: #76cdd8;
+}
+
+.steps_root :global .ant-steps-item:first-child {
+  padding-left: 16px !important;
+}
+
+.steps_root :global .ant-steps-item-active {
+  border: 3px solid rgb(163, 198, 68);
+}
+
+.steps_root :global .ant-steps-item-finish {
+  background-color: rgb(163, 198, 68) !important;
+}
+
+.steps_root :global .ant-steps-item-finish .even_step_title {
+  color: rgb(255, 255, 255);
+}
+
+.steps_root :global .odd_step_title {
+  color: rgb(255, 255, 255);
+}
+.steps_root :global .even_step_title {
+  color: rgb(73, 72, 74);
+}

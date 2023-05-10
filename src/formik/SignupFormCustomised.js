@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Formik, Form, useField } from "formik";
+import { Radio } from "antd";
+import { Formik, Form, useField, useFormikContext } from "formik";
 import * as Yup from "yup";
 
 const MyTextInput = ({ label, ...props }) => {
@@ -20,7 +20,7 @@ const MyTextInput = ({ label, ...props }) => {
 };
 
 const MyCheckbox = ({ children, ...props }) => {
-  // React treats radios and checkbox inputs differently other input types, select, and textarea.
+  // React treats radios and checkbox inputs differently than other input types, select, and textarea.
   // Formik does this too! When you specify `type` to useField(), it will
   // return the correct bag of props for you -- a `checked` prop will be included
   // in `field` alongside `name`, `value`, `onChange`, and `onBlur`
@@ -51,6 +51,32 @@ const MySelect = ({ label, ...props }) => {
   );
 };
 
+const MyRadio = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  const { options, onRadioChange } = props;
+  const { onChange, ...restField } = field;
+  const { setFieldValue } = useFormikContext();
+  const onChangeHandler = (e) => {
+    setFieldValue("gender", e.target.value);
+    onRadioChange();
+  };
+
+  return (
+    <>
+      <Radio.Group onChange={onChangeHandler} {...restField}>
+        <label htmlFor={props.id}>{label}</label>
+        {options.map((opt, index) => (
+          <Radio value={opt} key={index}>
+            {opt}
+          </Radio>
+        ))}
+      </Radio.Group>
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
+    </>
+  );
+};
 // And now we can use these
 const SignupFormCustomised = () => {
   return (
@@ -62,7 +88,8 @@ const SignupFormCustomised = () => {
           lastName: "",
           email: "",
           acceptedTerms: false, // added for our checkbox
-          jobType: "", // added for our select
+          jobType: "", // added for our select,
+          gender: "",
         }}
         validationSchema={Yup.object({
           firstName: Yup.string()
@@ -77,12 +104,15 @@ const SignupFormCustomised = () => {
           acceptedTerms: Yup.boolean()
             .required("Required")
             .oneOf([true], "You must accept the terms and conditions."),
+          gender: Yup.string()
+            .required("Required")
+            .oneOf(["male", "female"], "Invalid Gender Type"),
           jobType: Yup.string()
             .oneOf(
               ["designer", "development", "product", "other"],
               "Invalid Job Type"
             )
-            .required("Required"),
+            .required("must have"),
         })}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
@@ -91,42 +121,64 @@ const SignupFormCustomised = () => {
           }, 400);
         }}
       >
-        <Form>
-          <MyTextInput
-            label="First Name"
-            name="firstName"
-            type="text"
-            placeholder="Jane"
-          />
-
-          <MyTextInput
-            label="Last Name"
-            name="lastName"
-            type="text"
-            placeholder="Doe"
-          />
-
-          <MyTextInput
-            label="Email Address"
-            name="email"
-            type="email"
-            placeholder="jane@formik.com"
-          />
-
-          <MySelect label="Job Type" name="jobType">
-            <option value="">Select a job type</option>
-            <option value="designer">Designer</option>
-            <option value="development">Developer</option>
-            <option value="product">Product Manager</option>
-            <option value="other">Other</option>
-          </MySelect>
-
-          <MyCheckbox name="acceptedTerms">
-            I accept the terms and conditions
-          </MyCheckbox>
-
-          <button type="submit">Submit</button>
-        </Form>
+        {(values) => (
+          <Form>
+            <div>
+              <MyTextInput
+                label="First Name"
+                name="firstName"
+                type="text"
+                placeholder="Jane"
+              />
+            </div>
+            <div>
+              <MyTextInput
+                label="Last Name"
+                name="lastName"
+                type="text"
+                placeholder="Doe"
+              />
+            </div>
+            <div>
+              <MyTextInput
+                label="Email Address"
+                name="email"
+                type="email"
+                placeholder="jane@formik.com"
+              />
+            </div>
+            <MySelect label="Job Type" name="jobType">
+              <option value="">Select a job type</option>
+              <option value="designer">Designer</option>
+              <option value="development">Developer</option>
+              <option value="product">Product Manager</option>
+              <option value="other">Other</option>
+            </MySelect>
+            <MyCheckbox name="acceptedTerms">
+              I accept the terms and conditions
+            </MyCheckbox>
+            {/* <div role="group" aria-labelledby="my-radio-group">
+              <label style={{ marginRight: "20px" }}>
+                <Field type="radio" name="picked" value={1} as={Radio} />
+                One
+              </label>
+              <label>
+                <Field type="radio" name="picked" value={2} as={Radio} />
+                Two
+              </label>
+              <div>Picked: {values.picked}</div>
+            </div> */}
+            <MyRadio
+              label="Gender"
+              name="gender"
+              options={["male", "female"]}
+              onRadioChange={() => console.log("Onchange handler")}
+            ></MyRadio>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </Form>
+        )}
       </Formik>
     </>
   );

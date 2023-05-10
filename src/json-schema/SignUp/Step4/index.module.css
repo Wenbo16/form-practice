@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.completed_icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.flexButton {
+  margin: 29px auto 50px;
+  width: 88px;
+  background-color: #a3c644 !important;
+  color: #ffffff !important;
+}

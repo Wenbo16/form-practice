@@ -1,0 +1,163 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebedf5;
+  min-height: calc(100vh - 200px);
+  padding-bottom: 50px;
+}
+
+.sidebarContainer {
+  width: 70%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.content {
+  width: 70%;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #0000001f;
+  border: solid 1px #0000001f;
+  background-color: #fff;
+}
+
+.formWrapper {
+  width: 450px;
+}
+
+.formNotice {
+  display: inline;
+  color: #999999;
+  margin-bottom: 15px;
+}
+
+.highlightWord {
+  font-weight: 600;
+  line-height: 22px;
+  color: #999999;
+  background-color: #fff;
+}
+
+.formWrapper :global .rjsf {
+  margin-top: 20px;
+}
+
+.formWrapper
+  :global
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::before {
+  content: none;
+}
+
+.formWrapper
+  :global
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::after {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  content: "*";
+  color: #ff4d4f;
+  font-family: SimSu, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.formWrapper :global .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.formWrapper :global .ant-form-item-required {
+  font-weight: 600;
+  color: #464547;
+}
+
+.formWrapper
+  :global
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::before {
+  content: none;
+}
+
+.formWrapper
+  :global
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::after {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  content: "*";
+  color: #ff4d4f;
+  font-family: SimSu, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.formWrapper :global .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.formWrapper :global .ant-form-item-required {
+  font-weight: 600;
+  color: #464547;
+}
+
+.error {
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #ff4d4f;
+}
+
+.submitButton,
+.defaultButton {
+  display: block;
+  width: 88px;
+  height: 36px;
+  font-weight: 600;
+  fontweight: 600;
+  margintop: "45px";
+}
+
+.submitButton {
+  color: "#ffffff";
+  background-color: #a3c644;
+  color: #ffffff;
+}
+
+.defaultButton {
+  background-color: #fff;
+}
+
+.highlightPrimary {
+  color: #ff6365;
+}
+
+.highlightSecondary {
+  color: #2098d4;
+}
+
+.asButton:hover,
+.asButton:focus {
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,7 @@
+.tradeCodeInput input[type="password"]:not([placeholder=""]) {
+  color: transparent;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACHSURBVHgBjY9RDYAwDEQXwj84AAk4AAlIQAoOwAE4ARzgYA4YDsY16UgpI+GSl67bdW2NeasBE8eHkg9z99ecq3grBS0owAZ2Yco4VqAGJyUL8IxjZB7O5DMlmNWDVwWj3iFXXYg1Nnvo4CK/ljHzzAbLS1k5q1Qb+YniwfeNLui5SIpMQ0gudJMtoIKUn1oAAAAASUVORK5CYII=);
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

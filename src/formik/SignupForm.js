@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./style.css";
@@ -31,7 +30,7 @@ const validate = (values) => {
 
 const SignupForm = () => {
   // a validate function that will be called when form values change or fields are blurred,
-  //  By default, Formik will validate after each keystroke (change event), each input’s blur event, as well as prior to submission.
+  // By default, Formik will validate after each keystroke (change event), each input’s blur event, as well as prior to submission.
   const {
     values,
     errors,
@@ -63,9 +62,9 @@ const SignupForm = () => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="firstName">First Name</label>
       <input id="firstName" type="text" {...getFieldProps("firstName")} />
-      {touched.firstName && errors.firstName ? (
+      {/* {touched.firstName && errors.firstName ? (
         <div>{errors.firstName}</div>
-      ) : null}
+      ) : null} */}
 
       <label htmlFor="lastName">Last Name</label>
       <input
@@ -76,9 +75,9 @@ const SignupForm = () => {
         onBlur={handleBlur}
         value={values.lastName}
       />
-      {touched.lastName && errors.lastName ? (
+      {/* {touched.lastName && errors.lastName ? (
         <div>{errors.lastName}</div>
-      ) : null}
+      ) : null} */}
 
       <label htmlFor="email">Email Address</label>
       <input
@@ -90,7 +89,7 @@ const SignupForm = () => {
         value={values.email}
       />
       {/* formik.errors is populated via the custom validation function.  */}
-      {touched.email && errors.email ? <div>{errors.email}</div> : null}
+      {/* {touched.email && errors.email ? <div>{errors.email}</div> : null} */}
       {/* The onSubmit function we passed to useFormik() will be executed only if there are no errors (i.e. if our validate function returns {}). */}
       <button type="submit">Submit</button>
     </form>
