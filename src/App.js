@@ -5,7 +5,7 @@ import SignupForm from "./formik/SignupFormWithContext";
 import Reservation from "./formik/MiniFormik";
 import JSONSchemaForm from "./json-schema";
 import SignUp from "./json-schema/SignUp/index.tsx";
-import MyForm from "./my-form";
+import MyForm from "./my-form-hooks";
 
 function App() {
   return (
